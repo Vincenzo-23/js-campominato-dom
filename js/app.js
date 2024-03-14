@@ -33,6 +33,42 @@ function startGame(){
     const numOfCells = size * size
 
 
+    //dobbiamo generare 16 bombe indipendentemente dalla difficoltà
+    // - dichiariamo due variabili che ci serviranno per stabilire il range di numeri tra cui generare i 16 numeri casuali
+    const min = 1;
+    const max = numOfCells
+    // - dichiariamo una variabile alla quale assegneremo come valore, la quantità di numeri da creare (ovvero 16)
+    const randomNumbers = 16
+    // - creiamo un array vuoto che rappresenta le bombe dove poi pusheremo gli elementi
+    const bombs = [];
+    // - creiamo un ciclo while che ci servirà per riempire questo array con 16 numeri che saranno le bombe che finiranno nel numero di cella corrispondente
+    // - finché la lunghezza dell'array < della quantità di numeri da creare
+    while (bombs.length < randomNumbers) {
+        //genera un numero casuale
+        const randomNumber = Math.floor(Math.random() * max) + min;
+
+        //nella stessa cella può finire solo una bomba, quindi nell'array non possono finire numeri doppioni
+        // - SE il numero non è contenuto nell'array allora pushalo
+        if (bombs.includes(randomNumber) === false) {
+            bombs.push(randomNumber)
+        }
+
+    }
+    console.log(bombs)
+
+    
+    //creiamo un ciclo for per iterare quelli che saranno gli elementi che compongono l'array con dentro 16 bombe ovvero bombs
+    for (let j = 0; j < bombs.length; j++){
+        
+       let bomb = bombs[j];
+
+       
+       console.log(bomb)
+       
+    }
+
+
+
     //inserisco una stringa vuota in modo tale da non reinserire un'ulteriore griglia al click del play, una volta che ho già cliccato
     gridElement.innerHTML = ""
 
@@ -71,31 +107,8 @@ function startGame(){
         })
         
     }
-
-
-    //dobbiamo generare 16 bombe indipendentemente dalla difficoltà
-    // - dichiariamo due variabili che ci serviranno per stabilire il range di numeri tra cui generare i 16 numeri casuali
-    const min = 1;
-    const max = numOfCells
-    // - dichiariamo una variabile alla quale assegneremo come valore, la quantità di numeri da creare (ovvero 16)
-    const randomNumbers = 16
-    // - creiamo un array vuoto che rappresenta le bombe dove poi pusheremo gli elementi
-    const bombs = [];
-    // - creiamo un ciclo while che ci servirà per riempire questo array con 16 numeri che saranno le bombe che finiranno nel numero di cella corrispondente
-    // - finché la lunghezza dell'array < della quantità di numeri da creare
-    while (bombs.length < randomNumbers) {
-        //genera un numero casuale
-        const randomNumber = Math.floor(Math.random() * max) + min;
-
-        //nella stessa cella può finire solo una bomba, quindi nell'array non possono finire numeri doppioni
-        // - SE il numero non è contenuto nell'array allora pushalo
-        if (bombs.includes(randomNumber) === false) {
-            bombs.push(randomNumber)
-        }
-
-    }
-
-    console.log(bombs)
+    
+    
 
 
 }
