@@ -21,6 +21,8 @@ playButton.addEventListener("click", startGame)
 
 function startGame(){
    
+    //resetto il pointerEvents ogni volta che clicco sul play button
+    gridElement.style.pointerEvents = `auto`
     
      
     //dichiaro una variabile size alla quale assegno il valore della grandezza di un lato della griglia di gioco
@@ -107,7 +109,7 @@ function startGame(){
                 cellElement.classList.add("bg_red")
                 // gridElement.style.pointerEvents = `none`
                 alert(`Hai perso. Riprova e sarai più fortunato!`)
-                cellElement.style.pointerEvents = `none`
+                gridElement.style.pointerEvents = `none`
 
             }
 
