@@ -26,8 +26,8 @@ function startGame(){
    
     
      
-    //dichiaro una variabile size alla quale assegno il valore della grandezza di un lato della griglia di gioco (in questo caso 10)
-    //ovvero 10 celle per lato, essendo la griglia di 10*10)
+    //dichiaro una variabile size alla quale assegno il valore della grandezza di un lato della griglia di gioco
+    // - calcolo questa grandezza grazie alla funzione getSize che mi cambia il size in base alla difficoltà scelta
     let size = getSize()
     //dichiaro una variabile numOfCells alla quale assegno il valore di size * size
     const numOfCells = size * size
@@ -64,14 +64,43 @@ function startGame(){
         
         //aggiungo l'event listener al click del cellElement
         cellElement.addEventListener("click", function(){
-
+    
             // - uso la funzione .classList.toggle("bg_blue") su cellElement per aggiungere il background blue all cella che cliccerò
             cellElement.classList.toggle("bg_blue")
-
+        
         })
         
     }
+
+
+    //dobbiamo generare 16 bombe indipendentemente dalla difficoltà
+    // - dichiariamo due variabili che ci serviranno per stabilire il range di numeri tra cui generare i 16 numeri casuali
+    const min = 1;
+    const max = numOfCells
+    // - dichiariamo una variabile alla quale assegneremo come valore, la quantità di numeri da creare (ovvero 16)
+    const randomNumbers = 16
+    // - creiamo un array vuoto che rappresenta le bombe dove poi pusheremo gli elementi
+    const bombs = [];
+    // - creiamo un ciclo while che ci servirà per riempire questo array con 16 numeri che saranno le bombe che finiranno nel numero di cella corrispondente
+    // - finché la lunghezza dell'array < della quantità di numeri da creare
+    while (bombs.length < randomNumbers) {
+        //genera un numero casuale
+        const randomNumber = Math.floor(Math.random() * max) + min;
+
+        //nella stessa cella può finire solo una bomba, quindi nell'array non possono finire numeri doppioni
+        // - SE il numero non è contenuto nell'array allora pushalo
+        if (bombs.includes(randomNumber) === false) {
+            bombs.push(randomNumber)
+        }
+
+    }
+
+    console.log(bombs)
+
+
 }
+
+
 
 
 function getSize(){
@@ -89,8 +118,5 @@ function getSize(){
         size = 9
     }
     
-      
-
-
     return size
 }
