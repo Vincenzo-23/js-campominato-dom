@@ -1,0 +1,79 @@
+/* RESET */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    display: block;
+}
+
+/* STYLES */
+
+/* Header */
+.logo{
+    width: 70px;
+}
+
+.container_lg{
+    padding: 10px;
+    padding-right: 20px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title{
+    margin-right: auto;
+}
+
+.play_btn{
+    padding: 3px 15px;
+    cursor: pointer;
+}
+
+
+/* Main */
+
+.grid_wrapper{
+    padding: 60px;
+    background-color: rgb(127, 255, 212);
+}
+
+.container{
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+
+.grid{
+    display: grid;
+    /* grid-template-columns: repeat(10, 1fr); */
+    user-select: none;
+}
+
+
+.cell{
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+
+.bg_blue{
+    background-color: rgb(105, 213, 255);
+}
+
+
+/* Footer */
+
+.credits{
+    padding: 10px;
+}
