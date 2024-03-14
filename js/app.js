@@ -62,7 +62,6 @@ function startGame(){
         }
 
     }
-    console.log(bombs)
 
 
 
@@ -127,8 +126,12 @@ function startGame(){
 
     gridElement.addEventListener("click", function(){
         score++
-        console.log(score)
         pointsElement.innerHTML = score
+        if(score === numOfCells - randomNumbers){
+            alert("Congratulazioni hai vinto!")
+            gridElement.style.pointerEvents = `none`
+
+        }
     })
     
 
