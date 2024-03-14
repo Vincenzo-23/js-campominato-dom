@@ -19,9 +19,6 @@ playButton.addEventListener("click", startGame)
 
 
 
-
-
-
 function startGame(){
    
     
@@ -32,15 +29,19 @@ function startGame(){
     //dichiaro una variabile numOfCells alla quale assegno il valore di size * size
     const numOfCells = size * size
 
+    
 
     //dobbiamo generare 16 bombe indipendentemente dalla difficoltà
     // - dichiariamo due variabili che ci serviranno per stabilire il range di numeri tra cui generare i 16 numeri casuali
     const min = 1;
     const max = numOfCells
+
     // - dichiariamo una variabile alla quale assegneremo come valore, la quantità di numeri da creare (ovvero 16)
     const randomNumbers = 16
+
     // - creiamo un array vuoto che rappresenta le bombe dove poi pusheremo gli elementi
     const bombs = [];
+    
     // - creiamo un ciclo while che ci servirà per riempire questo array con 16 numeri che saranno le bombe che finiranno nel numero di cella corrispondente
     // - finché la lunghezza dell'array < della quantità di numeri da creare
     while (bombs.length < randomNumbers) {
@@ -56,16 +57,7 @@ function startGame(){
     }
     console.log(bombs)
 
-    
-    //creiamo un ciclo for per iterare quelli che saranno gli elementi che compongono l'array con dentro 16 bombe ovvero bombs
-    for (let j = 0; j < bombs.length; j++){
-        
-       let bomb = bombs[j];
 
-       
-       console.log(bomb)
-       
-    }
 
 
 
@@ -98,11 +90,19 @@ function startGame(){
         gridElement.style.gridTemplateColumns = `repeat(${size}, 1fr)`
 
         
+        
         //aggiungo l'event listener al click del cellElement
         cellElement.addEventListener("click", function(){
-    
-            // - uso la funzione .classList.toggle("bg_blue") su cellElement per aggiungere il background blue all cella che cliccerò
-            cellElement.classList.toggle("bg_blue")
+            //SE l'array bombs include il num della cella cliccata
+            if (bombs.includes(num)){
+                // - uso la funzione .classList.add("bg_red") su cellElement per aggiungere il background red all cella che cliccerò
+                cellElement.classList.add("bg_red")
+
+                //ALTRIMENTI
+            }else{
+                // - uso la funzione .classList.add("bg_blue") su cellElement per aggiungere il background blue all cella che cliccerò
+                cellElement.classList.add("bg_blue")
+            }
         
         })
         
@@ -118,18 +118,20 @@ function startGame(){
 
 function getSize(){
 
-    let size = 10
+    // let size = 10
 
-    //recupero la value delle options all'interno di questa select dichiarando una variabile ed assegnandola ad essa
-    let difficulty = gameModesElement.value
+    // //recupero la value delle options all'interno di questa select dichiarando una variabile ed assegnandola ad essa
+    // let difficulty = gameModesElement.value
 
-    //SE la value === 3
-    if(difficulty === "3"){
-        size = 7
-    }else if(difficulty === "2"){
-    //ALTRIMENTI SE === 2
-        size = 9
-    }
+    // //SE la value === 3
+    // if(difficulty === "3"){
+    //     size = 7
+    // }else if(difficulty === "2"){
+    // //ALTRIMENTI SE === 2
+    //     size = 9
+    // }
     
-    return size
+    // return size
+
+    return parseInt(gameModesElement.value);
 }
