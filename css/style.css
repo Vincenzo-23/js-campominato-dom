@@ -27,8 +27,11 @@ img{
     gap: 10px;
 }
 
-.title{
+.result{
     margin-right: auto;
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .play_btn{
@@ -64,7 +67,7 @@ img{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
+
 }
 
 .bg_blue{

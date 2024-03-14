@@ -93,18 +93,26 @@ function startGame(){
         
         //aggiungo l'event listener al click del cellElement
         cellElement.addEventListener("click", function(){
-            //SE l'array bombs include il num della cella cliccata
-            if (bombs.includes(num)){
-                // - uso la funzione .classList.add("bg_red") su cellElement per aggiungere il background red all cella che cliccerò
-                cellElement.classList.add("bg_red")
 
-                //ALTRIMENTI
-            }else{
+           
+            
+            //SE l'array bombs non include il num della cella cliccata
+            if (bombs.includes(num) === false){
                 // - uso la funzione .classList.add("bg_blue") su cellElement per aggiungere il background blue all cella che cliccerò
                 cellElement.classList.add("bg_blue")
+                cellElement.style.pointerEvents = `none`
+                //ALTRIMENTI
+            }else{
+                // - uso la funzione .classList.add("bg_red") su cellElement per aggiungere il background red all cella che cliccerò
+                cellElement.classList.add("bg_red")
+                // gridElement.style.pointerEvents = `none`
+                alert(`Hai perso. Riprova e sarai più fortunato!`)
+                cellElement.style.pointerEvents = `none`
+
             }
-        
+
         })
+        
         
     }
     
