@@ -24,6 +24,11 @@ function startGame(){
     //resetto il pointerEvents ogni volta che clicco sul play button
     gridElement.style.pointerEvents = `auto`
     
+    //recupero dal DOM l'elemento dove andrò poi a stampare il punteggio del giocatore
+    let pointsElement = document.querySelector(".score_points")
+
+    //setto il punteggio a stringa vuota ogni qual volta il giocatore clicca sul play button, così da resettarlo per le nuove partite
+    pointsElement.innerHTML = ""
      
     //dichiaro una variabile size alla quale assegno il valore della grandezza di un lato della griglia di gioco
     // - calcolo questa grandezza grazie alla funzione getSize che mi cambia il size in base alla difficoltà scelta
@@ -118,8 +123,14 @@ function startGame(){
         
     }
     
-    
+    let score = 0
 
+    gridElement.addEventListener("click", function(){
+        score++
+        console.log(score)
+        pointsElement.innerHTML = score
+    })
+    
 
 }
 
